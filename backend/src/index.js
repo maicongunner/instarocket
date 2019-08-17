@@ -13,14 +13,14 @@ const io = require('socket.io')(server);
 
 // conexao com o BD MongoDB(online - MongoDB Atlas -> https://cloud.mongodb.com)
 mongoose.connect('mongodb+srv://semana:semana@cluster0-c2iv7.mongodb.net/test?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
+  useNewUrlParser: true,
 });
 
-//repassa a informacao em tempo real para todas as rotas no front-end
+// repassa a informacao em tempo real para todas as rotas no front-end
 app.use((req, res, next) => {
-    req.io = io;
-    next();
-})
+  req.io = io;
+  next();
+});
 
 // permite que todas url, servidores possam acessar o app
 app.use(cors());
